@@ -16,8 +16,16 @@ put_in_order() {
     done
 }
 
-#Mesures execution time
-time put_in_order
+time put_in_order #Mesures execution time(just shows 3 decimals)
+
+# Also mesures execution time, but I can customize how many decimals I want
+start=$(date +%s.%N)
+put_in_order
+end=$(date +%s.%N)
+# Shows the execution time with 20 decimals
+runtime=$(printf "%.20f" $(echo "$end - $start" | bc))
 
 # shows ordenated numbers
 echo "${numbers[@]}"
+
+echo "Code executed in: $runtime seconds"
