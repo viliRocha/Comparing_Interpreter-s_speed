@@ -16,5 +16,8 @@ put_in_order() {
     done
 }
 
-put_in_order
+#Mesures execution time
+time put_in_order
+
+# shows ordenated numbers
 echo "${numbers[@]}"
