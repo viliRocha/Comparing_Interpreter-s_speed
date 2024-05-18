@@ -1,6 +1,6 @@
 from timeit import timeit
 
-# Basic algorithm to put numbers from an array  in discending order
+# Basic algorithm to put numbers from an array  in ascending order
 
 code = ""
 
