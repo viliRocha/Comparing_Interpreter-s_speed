@@ -4,7 +4,7 @@ from timeit import timeit
 
 code = ""
 
-numbers = [13, 5, 7, 200, 3, 7.9];
+numbers = [13, 5, 7, 200, 3, 7.9]
 
 def put_in_order():
     for i, num in enumerate(numbers):
