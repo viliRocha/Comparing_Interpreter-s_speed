@@ -2,6 +2,7 @@ require 'benchmark'
 
 numbers = [13, 5, 7, 200, 3, 7.9]
 
+#Calculate programs execution time
 result = Benchmark.measure do
     def put_in_order(numbers)
     for i in 1...numbers.length
