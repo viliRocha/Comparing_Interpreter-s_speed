@@ -9,3 +9,5 @@ The first algorithm just puts all numbers in an array in ascending order.
 And the second one will calculate the average, the median and the mode between the numbers in the array.
 
 ### Then finally I will compare the execution time between the programming languages, executing each algorithm in each language three times and getting an average between the values to make a graph.
+
+![graph](./src/graphic.png)
