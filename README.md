@@ -10,6 +10,4 @@ And the second one will calculate the average, the median and the mode between t
 
 ### Then finally I will compare the execution time between the programming languages, executing each algorithm in each language three times and getting an average between the values to make a graph.
 
-![graph](./src/graph.png)
-
-OBS: I just want to make it clear that I was running those codes in online code editors, so because of that they are a lot slower.
+![graph](./src/graphic.png)
