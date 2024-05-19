@@ -8,7 +8,7 @@ function get_mode(mod) {
 
     let bgst_freq = 1;
 
-    //const mode_vals = [];
+    const mode_vals = [];
 
     for (let i = 0; i < mod.length; i++) {
         let num = mod[i];
@@ -21,19 +21,18 @@ function get_mode(mod) {
         }
 
         if (frequency[num] > bgst_freq) {
-            bgst_freq = num;
+            bgst_freq = frequency[num];
         }
-        /*
-            if (num === bgst_freq) {
-                mode_vals.push(parseFloat(num)); // Converter para número
-            }
-        */
     }
+    for (let num in frequency) {
+            if (frequency[num] === bgst_freq) {
+                mode_vals.push(parseFloat(num));
+            }
+        }
 
-    //return (mode_vals.join(', '));
     console.timeEnd('code executed in');
 
-    return (bgst_freq);
+    return (mode_vals.join(', '));
 }
 
-console.log(get_mode(values));
+console.log('Mode:', get_mode(values));
