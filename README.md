@@ -10,4 +10,8 @@ And the second one will calculate the mode between the numbers in the array.
 
 ### Then finally I will compare the execution time between the programming languages, executing each algorithm in each language three times and getting an average between the values to make a graph.
 
-![graph](./src/graphic.png)
+![first_graph](./src/graph1.png)
+
+
+
+![second_graph](./src/graph2.png)
