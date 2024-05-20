@@ -3,7 +3,7 @@ import java.text.DecimalFormat;
 public class PutInOrder {
     public static void main(String[] args) {
 
-        long startTime = System.nanoTime();
+        double startTime = System.nanoTime();
 
         int[] numbers = {13, 5, 7, 200, 3, 9};
 
@@ -24,8 +24,8 @@ public class PutInOrder {
             System.out.println(numbers[i]);
         }
 
-        long endTime = System.nanoTime();
-        long duration = (endTime - startTime) / 1000000;  // get time in milliseconds.
+        double endTime = System.nanoTime();
+        double duration = (endTime - startTime) / 1000000;  // get time in milliseconds.
 
         // Defines number of decimals, in this case, 3
         DecimalFormat df = new DecimalFormat("#.###");
