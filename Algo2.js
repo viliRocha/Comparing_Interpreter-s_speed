@@ -13,6 +13,8 @@ function get_mode(mod) {
     for (let i = 0; i < mod.length; i++) {
         let num = mod[i];
 
+        // Null, undefined, etc = false
+        // If has value = true
         if (frequency[num]) {
             frequency[num] += 1;
         }
