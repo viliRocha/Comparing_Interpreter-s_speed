@@ -4,6 +4,7 @@
 
 numbers=(13 5 7 200 3 9)
 
+# Algoritm to let numbers in increasing order
 put_in_order() {
     for ((i=1; i<7; i++)); do
         num=${numbers[i]}
@@ -16,18 +17,18 @@ put_in_order() {
     done
 }
 
-#Mesures execution time
+#Mesures execution time in seconds
 #time put_in_order
 
 
-# Mede o tempo de execução
-start=$(date +%s.%N)
+# Mesure execution time
+start=$(date +%s%3N)
 put_in_order
-end=$(date +%s.%N)
-runtime=$(printf "%.20f" $(echo "$end - $start" | bc))
+end=$(date +%s%3N)
+runtime=$((end - start))    # execution time in milliseconds
 
 # shows ordenated numbers
 echo "${numbers[@]}"
 
-# Exibe o tempo de execução com 10 casas decimais
-echo "Code executed in: $runtime seconds"
+# Exibites execution time
+echo "Code executed in: $runtime milliseconds"
