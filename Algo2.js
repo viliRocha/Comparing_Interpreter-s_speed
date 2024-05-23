@@ -8,27 +8,36 @@ function get_mode(mod) {
 
     let bgst_freq = 1;
 
-    const mode_vals = [];
+    let mode_vals = [];
 
     for (let i = 0; i < mod.length; i++) {
-        let num = mod[i];
+        for(let c = 0; c < mod.length; c++) {
+            if(mod[i] === mod[c]) {
+                // Null, undefined, etc = false
+                // If has value = true
+                if(frequency[i]) {
+                    frequency[i][0] = mod[i];
 
-        // Null, undefined, etc = false
-        // If has value = true
-        if (frequency[num]) {
-            frequency[num] += 1;
-        }
-        else {
-            frequency[num] = 1;
-        }
+                    frequency[i][1] += 1;
+                }
+                else {
+                    frequency.push([mod[i], 1]);
+                }
 
-        if (frequency[num] > bgst_freq) {
-            bgst_freq = frequency[num];
+                if (frequency[i][1] > bgst_freq) {
+                    bgst_freq = frequency[i][1];
+                }
+            }
         }
+        //console.log(frequency[i]);
+        //console.log(bgst_freq);
     }
-    for (let num in frequency) {
-            if (frequency[num] === bgst_freq) {
-                mode_vals.push(parseFloat(num));
+        
+        for (let num in frequency) {
+            if (frequency[num][1] === bgst_freq/* && frequency[num][0] != mode_vals[num]*/) {
+                mode_vals.push(parseFloat(frequency[num][0]));
+
+                console.log(mode_vals[num]);
             }
         }
 
