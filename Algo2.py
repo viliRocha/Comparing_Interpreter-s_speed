@@ -1,7 +1,5 @@
 from timeit import timeit
 
-code = ""
-
 values = [7.9, 4.2, 7.9, 3.6, 0.9, 2.3, 3.6]
 
 def get_mode(mod):
@@ -26,8 +24,12 @@ def get_mode(mod):
             mode_vals.append(num)
 
     return mode_vals
+    
+code = '''
+get_mode(values)
+'''
 
 
-algo_two_time = timeit(stmt=code, number=10000)
+algo_two_time = timeit(stmt=code, number=1, globals=globals())
 
 print ('Mode:', get_mode(values), f"\n Executed in: {algo_two_time}ms")
