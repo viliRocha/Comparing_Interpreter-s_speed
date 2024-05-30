@@ -19,6 +19,6 @@ code = '''
 put_in_order()
 '''
 
-algo_one_time = timeit(stmt=code, number=10000, globals=globals())
+algo_one_time = timeit(stmt=code, number=1, globals=globals())
 
 print(numbers, f"Executed in: {algo_one_time}ms")
