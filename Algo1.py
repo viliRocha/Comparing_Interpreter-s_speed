@@ -2,8 +2,6 @@ from timeit import timeit
 
 # Basic algorithm to put numbers from an array  in ascending order
 
-code = ""
-
 numbers = [13, 5, 7, 200, 3, 7.9]
 
 def put_in_order():
@@ -17,7 +15,10 @@ def put_in_order():
 
       numbers[j + 1] = num
 
-algo_one_time = timeit(stmt=code, number=10000)
-
+code = '''
 put_in_order()
+'''
+
+algo_one_time = timeit(stmt=code, number=10000, globals=globals())
+
 print(numbers, f"Executed in: {algo_one_time}ms")
