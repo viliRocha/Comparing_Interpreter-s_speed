@@ -1,12 +1,14 @@
 #!/bin/bash
 
-# Array of floating-point numbers
-numbers=(13, 5, 7, 200, 3, 7.9)
+# Define the numbers as a space-separated string
+numbers="13, 5, 7, 200, 3, 7.9,"
 
 # Function to sort numbers in increasing order using awk
 put_in_order() {
-    # Convert the array to a format suitable for awk
-    printf "%s\n" "${numbers[@]}" | awk '{a[NR] = $0} END {for (i = 1; i <= NR; i++) for (j = i + 1; j <= NR; j++) if (a[i] > a[j]) {temp = a[i]; a[i] = a[j]; a[j] = temp} for (i = 1; i <= NR; i++) print a[i]}'
+    # Use awk to sort the numbers
+    sorted_numbers=$(echo $numbers | awk '{for(i=1;i<=NF;i++) print $i}' | sort -n)
+    # Convert the sorted output back into a variable
+    numbers="$sorted_numbers"
 }
 
 #Mesures execution time in seconds
