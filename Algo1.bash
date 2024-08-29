@@ -1,25 +1,16 @@
 #!/bin/bash
 
-#Unfortunatelly it is hard to support float numbers
+# Array of floating-point numbers
+numbers=(13, 5, 7, 200, 3, 7.9)
 
-numbers=(13 5 7 200 3 9)
-
-# Algoritm to let numbers in increasing order
+# Function to sort numbers in increasing order using awk
 put_in_order() {
-    for ((i=1; i<7; i++)); do
-        num=${numbers[i]}
-        j=$((i-1))
-        while ((j>=0 && numbers[j]>num)); do
-            numbers[j+1]=${numbers[j]}
-            j=$((j-1))
-        done
-        numbers[j+1]=$num
-    done
+    # Convert the array to a format suitable for awk
+    printf "%s\n" "${numbers[@]}" | awk '{a[NR] = $0} END {for (i = 1; i <= NR; i++) for (j = i + 1; j <= NR; j++) if (a[i] > a[j]) {temp = a[i]; a[i] = a[j]; a[j] = temp} for (i = 1; i <= NR; i++) print a[i]}'
 }
 
 #Mesures execution time in seconds
 #time put_in_order
-
 
 # Mesure execution time
 start=$(date +%s%3N)
@@ -27,8 +18,8 @@ put_in_order
 end=$(date +%s%3N)
 runtime=$((end - start))    # execution time in milliseconds
 
-# shows ordenated numbers
-echo "${numbers[@]}"
+# Show ordered numbers
+echo "Ordered numbers: ${sorted_numbers[@]}"
 
-# Exibites execution time
+# Exhibit execution time
 echo "Code executed in: $runtime milliseconds"
