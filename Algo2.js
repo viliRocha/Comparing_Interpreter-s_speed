@@ -16,8 +16,6 @@ function get_mode(mod) {
                 // Null, undefined, etc = false
                 // If has value = true
                 if(frequency[i]) {
-                    frequency[i][0] = mod[i];
-
                     frequency[i][1] += 1;
                 }
                 else {
@@ -33,13 +31,13 @@ function get_mode(mod) {
         //console.log(bgst_freq);
     }
         
-        for (let num in frequency) {
-            if (frequency[num][1] === bgst_freq/* && frequency[num][0] != mode_vals[num]*/) {
-                mode_vals.push(parseFloat(frequency[num][0]));
+    for (let num of frequency) {
+        if (num[1] === bgst_freq && !mode_vals.includes(num[0])) {
+            mode_vals.push(num[0]);
 
-                console.log(mode_vals[num]);
-            }
+            //console.log(mode_vals[num]);
         }
+    }
 
     console.timeEnd('code executed in');
 
