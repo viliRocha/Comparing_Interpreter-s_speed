@@ -1,0 +1,19 @@
+{
+    "name": "Ubuntu",
+    "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:latest",
+    "features": {
+        "node": "latest"
+    },
+    
+    "postCreateCommand": "npm install",
+
+    "customizations": {
+		"vscode": {
+			"settings": {
+                "terminal.integrated.shell.linux": "/bin/bash"
+			}
+		}
+	}
+
+    //"remoteUser": "root"
+}
