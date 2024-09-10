@@ -1,6 +1,6 @@
 # Comparing Interpreter's execution time
 
-## In this repository, I will be comparing ç's performance against other interpreted languages like Python, Java, JavaScript Node, Bash and Ruby.
+## In this repository, I will be comparing Ç♭'s performance against other interpreted languages like Python, Java, JavaScript Node, Bash and Ruby.
 
 ### I will be creating two algorithms in each language:
 

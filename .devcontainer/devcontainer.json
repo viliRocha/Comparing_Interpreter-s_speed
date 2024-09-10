@@ -1,16 +1,20 @@
 {
     "name": "Ubuntu",
-    "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:latest",
+    "image": "mcr.microsoft.com/vscode/devcontainers/python:3.10",
     "features": {
-        "node": "latest"
+        "python": {
+            "version": "3.10",
+            "installPylint": true,
+            "installJupyter": true
+        }
     },
     
-    "postCreateCommand": "npm install",
+    "postCreateCommand": "pip install -r requirements.txt",
 
     "customizations": {
 		"vscode": {
 			"settings": {
-                "terminal.integrated.shell.linux": "/bin/bash"
+                "python.pythonPath": "/usr/local/bin/python"
 			}
 		}
 	}
