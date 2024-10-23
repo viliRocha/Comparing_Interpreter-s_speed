@@ -1,16 +1,16 @@
 # Comparing Interpreter's execution time
 
-## In this repository, I will be comparing Ç♭'s performance against other interpreted languages like Python, Java, JavaScript Node, Bash and Ruby.
+## In this repository, I will be comparing Ç♭'s performance against against several other interpreted languages, including Python, Java, JavaScript (Node), Bash, and Ruby.
 
-### I will be creating two algorithms in each language:
+### I will implement two algorithms in each language:
 
-The first algorithm just puts all numbers in an array in ascending order.
+The first algorithm will sort an array of numbers in ascending order.
 
-And the second one will calculate the mode between the numbers in the array.
+And the second one will calculate the mode between the numbers within the array.
 
-### Then I will compare the execution time between the programming languages, executing each algorithm in each language three times and getting an average between the values to make a graph.
+### o evaluate the performance of each programming language, I will execute each algorithm three times and compute the average execution time. This data will then be used to create two comparative graphs.
 
-NB: Some programming languages here, such as Java and JS are not exactly Interpreted, being instead JIT (Just in Time) Compiled, which means they interpret the biggest part of the code, but some tasks that are more performance demanding like loops are directly transpiled into machine code.
+NB: Some of the languages  included in this comparison, such as Java and JavaScript, are not strictly interpreted. Instead, they utilize JIT (Just in Time) Compilation, which means that while most of the code is interpreted, performance-intensive tasks, such as loops, are directly compiled into machine code.
 
 ![first_graph](./src/graph1.png)
 

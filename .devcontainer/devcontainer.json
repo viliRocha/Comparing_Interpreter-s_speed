@@ -1,23 +1,29 @@
 {
-    "name": "Ubuntu",
-    "image": "mcr.microsoft.com/vscode/devcontainers/python:3.10",
+    "name": "Java 21 Development Environment",
+    "image": "mcr.microsoft.com/java/jdk:21",
     "features": {
-        "python": {
-            "version": "3.10",
-            "installPylint": true,
-            "installJupyter": true
-        }
+        "java": "21"
     },
-    
-    "postCreateCommand": "pip install -r requirements.txt",
 
-    "customizations": {
+    // Configure tool-specific properties.
+	"customizations": {
 		"vscode": {
-			"settings": {
-                "python.pythonPath": "/usr/local/bin/python"
-			}
-		}
-	}
+            "extensions": [
+                "redhat.java",
+                "vscjava.vscode-java-pack"
+            ],
+            "settings": {
+                "java.home": "/usr/local/openjdk-21",
+                "java.configuration.runtimes": [
+                    {
+                        "name": "JavaSE-21",
+                        "path": "/usr/local/openjdk-21"
+                    }
+                ]
+            }
+	    }
+    }
 
-    //"remoteUser": "root"
+    //"postCreateCommand": "javac -version && java -version",
+    //"remoteUser": "vscode"
 }

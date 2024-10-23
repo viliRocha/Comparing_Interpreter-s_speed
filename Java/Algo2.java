@@ -1,45 +1,40 @@
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.text.DecimalFormat;
 
-public class Algo2 {
-    public static List<Integer> get_mode(int[] mod) {
-        int[] frequency = new int[mod.length];
-        int bgst_freq = 1;
-        
-        List<Integer> mode_vals = new ArrayList<>();
-        
-        for (int i = 0; i < mod.length; i++) {
-            int num = mod[i];
-
-            if (frequency[num] != 0) {
-                frequency[num] += 1;
-            }
-            else {
-                frequency[num] = 1;
-            }
-
-            if (frequency[num] > bgst_freq) {
-                bgst_freq = frequency[num];
-            }
-        }
-    
-        for (int num = 0; num < frequency.length; num++) {
-            if (frequency[num] == bgst_freq) {
-                mode_vals.add(num);
-            }
-        }
-        
-        return mode_vals;
+public class Main {
+    public static void main(String[] args) {
+        double[] values = {7.9, 4.2, 7.9, 3.6, 0.9, 2.3, 3.6};
+        System.out.println("Mode: " + getMode(values));
     }
-    
-    public static void main(String args[]) {
-        int[] values = {200, 13, 5, 7, 13, 200, 3, 9, 200, 13};
-        
-        List<Integer> modes = get_mode(values);
-        String modeString = modes.stream()
-                                 .map(String::valueOf)
-                                 .collect(Collectors.joining(", "));
-        System.out.println("Mode: " + modeString);
+
+    // Gets mode numbers in array
+    public static String getMode(double[] mod) {
+        long startTime = System.nanoTime();
+
+        HashMap<Double, Integer> frequency = new HashMap<>();
+        int bgstFreq = 1;
+        ArrayList<Double> modeVals = new ArrayList<>();
+
+        for (double num : mod) {
+            frequency.put(num, frequency.getOrDefault(num, 0) + 1);
+            bgstFreq = Math.max(bgstFreq, frequency.get(num));
+        }
+
+        for (Double num : frequency.keySet()) {
+            if (frequency.get(num) == bgstFreq && !modeVals.contains(num)) {
+                modeVals.add(num);
+            }
+        }
+
+        long endTime = System.nanoTime();
+        double duration = (endTime - startTime) / 1000000;  // get time in milliseconds.
+
+        // Defines number of decimals, in this case, 3
+        DecimalFormat df = new DecimalFormat("#.###");
+        String formattedNum = df.format(duration);
+        System.out.println("Code executed in: " + formattedNum + " ms");
+
+        return String.join(", ", modeVals.stream().map(String::valueOf).toArray(String[]::new));
     }
 }
