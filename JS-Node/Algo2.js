@@ -1,47 +1,35 @@
-let values = [7.9, 4.2, 7.9, 3.6, 0.9, 2.3, 3.6];
+const values = [7.9, 4.2, 7.9, 3.6, 0.9, 2.3, 3.6];
 
-//Gets mode numbers in array
-function get_mode(mod) {
+//  Gets mode numbers in array
+function get_mode() {
     console.time('code executed in');
 
     let frequency = [];
 
     let bgst_freq = 1;
 
-    let mode_vals = [];
-
-    for (let i = 0; i < mod.length; i++) {
-        for(let c = 0; c < mod.length; c++) {
-            if(mod[i] === mod[c]) {
-                // Null, undefined, etc = false
-                // If has value = true
-                if(frequency[i]) {
-                    frequency[i][1] += 1;
-                }
-                else {
-                    frequency.push([mod[i], 1]);
-                }
-
-                if (frequency[i][1] > bgst_freq) {
-                    bgst_freq = frequency[i][1];
-                }
-            }
+    //  Count the frequency of each number using a for loop
+    for (let i = 0; i < values.length; i++) {
+        const num = values[i];
+        frequency[num] = (frequency[num] || 0) + 1;
+        if (frequency[num] > bgst_freq) {
+            bgst_freq = frequency[num];
         }
-        //console.log(frequency[i]);
-        //console.log(bgst_freq);
     }
-        
-    for (let num of frequency) {
-        if (num[1] === bgst_freq && !mode_vals.includes(num[0])) {
-            mode_vals.push(num[0]);
-
-            //console.log(mode_vals[num]);
+    
+    // Find the numbers that have the highest frequency using a for loop
+    const modes = [];
+    const keys = Object.keys(frequency); // Get the keys of the frequency object
+    for (let i = 0; i < keys.length; i++) {
+        const num = keys[i];
+        if (frequency[num] === bgst_freq) {
+            modes.push(num);
         }
     }
 
     console.timeEnd('code executed in');
 
-    return (mode_vals.join(', '));
+    console.log("Mode: " + modes.join(", "));
 }
 
-console.log('Mode:', get_mode(values));
+get_mode();
