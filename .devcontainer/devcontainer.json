@@ -1,20 +1,20 @@
 {
     "name": "Ubuntu",
-    "image": "mcr.microsoft.com/vscode/devcontainers/java:0-17",
+    "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:latest",
+
+    "features": {
+        "node": "latest"
+    },
 
     // Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
-            "extensions": [
-                "vscjava.vscode-java-pack"
-            ],
             "settings": {
-                "java.home": "/usr/local/sdkman/candidates/java/current"
+                "terminal.integrated.shell.linux": "/bin/bash"
             }
 	    }
     },
 
-    "forwardPorts": [],
-    "postCreateCommand": "java -version",
-    "remoteUser": "vscode"
+    "postCreateCommand": "npm install"
+    //"remoteUser": "vscode"
 }

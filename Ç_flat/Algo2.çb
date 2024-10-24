@@ -23,7 +23,7 @@ func get_mode() {
         }
     }
     
-    // result
+    # result
     print("Mode: " + join(modes, ", "))
 }
 
