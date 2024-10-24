@@ -1,16 +1,16 @@
 #!/bin/bash
 
-values=(7.9, 4.2, 7.9, 3.6, 0.9, 2.3, 3.6)
+values=(7.9 4.2 7.9 3.6 0.9 2.3 3.6)
 
 get_mode() {
     # Converting the array to a string and passing it to AWK
-    vals_mode=$(printf "%s\n" $values | awk '
+    vals_mode=$(printf "%s\n" "${values[@]}" | awk '
     {
         # Cut the frequency of each number
         for (i = 1; i <= NF; i++) {
             freq[$i]++;
-            if (freq[$i] > max_freq) {
-                max_freq = freq[$i];
+            if (freq[$i] > bgst_freq) {
+                bgst_freq = freq[$i];
             }
         }
     }
@@ -18,7 +18,7 @@ get_mode() {
     END {
         # Find the numbers that have the highest frequency
         for (num in freq) {
-            if (freq[num] == max_freq) {
+            if (freq[num] == bgst_freq) {
                 modes[count++] = num;
             }
         }
@@ -38,5 +38,7 @@ start=$(date +%s%3N)
 get_mode
 end=$(date +%s%3N)
 runtime=$((end - start))    # execution time in milliseconds
+
+printf "%s\n" "${vals_mode[@]}"
 
 echo "Code executed in: $runtime ms"

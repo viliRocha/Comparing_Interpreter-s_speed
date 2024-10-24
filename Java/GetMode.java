@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.text.DecimalFormat;
 
-public class Main {
+public class GetMode {
     public static void main(String[] args) {
         double[] values = {7.9, 4.2, 7.9, 3.6, 0.9, 2.3, 3.6};
         System.out.println("Mode: " + getMode(values));
@@ -28,7 +28,7 @@ public class Main {
         }
 
         long endTime = System.nanoTime();
-        double duration = (endTime - startTime) / 1000000;  // get time in milliseconds.
+        double duration = (endTime - startTime) / 1000000.00;  // get time in milliseconds.
 
         // Defines number of decimals, in this case, 3
         DecimalFormat df = new DecimalFormat("#.###");

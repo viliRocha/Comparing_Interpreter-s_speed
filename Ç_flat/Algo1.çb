@@ -1,0 +1,18 @@
+var numbers = [13, 5, 7, 200, 3, 7.9]
+
+func put_in_order() {
+  for (var i = 1, i < numbers.length, i+= 1) {
+    var current = numbers[i]
+    var j = i - 1
+        
+    for (j >= 0 and numbers[j] > current) {
+      numbers[j + 1] = numbers[j]
+      j-= 1
+    }
+        
+    numbers[j + 1] = current
+  }
+}
+
+put_in_order()
+print(numbers)

@@ -1,0 +1,37 @@
+var values = [7.9, 4.2, 7.9, 3.6, 0.9, 2.3, 3.6]
+
+func get_mode(mod) {
+    var frequency = []
+
+    var bgst_freq = 1
+
+    var mode_vals = []
+
+    for (var i = 0, i < length(mod), i+= 1) {
+        for(var c = 0, c < length(mod), c+= 1) {
+            if(mod[i] == mod[c]) {
+                if(frequency[i]) {
+                    frequency[i][1] += 1
+                }
+                else {
+                    #   frequency.push([mod[i], 1])
+                }
+
+                if (frequency[i][1] > bgst_freq) {
+                    bgst_freq = frequency[i][1]
+                }
+            }
+        }
+    }
+        
+#   for (let i = 0; i < frequency.length; i++) {
+#        var num = frequency[i];
+#        if (num[1] === bgst_freq and !mode_vals.includes(num[0])) {
+#            #   mode_vals.push(num[0])
+#        }
+#    }
+
+    return (join(mode_vals, ', '))
+}
+
+print('Mode:' + get_mode(values))

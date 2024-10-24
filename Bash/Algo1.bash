@@ -12,8 +12,6 @@ put_in_order() {
 
     # without awk sort (Adding + 0 in if (a[i] + 0 > a[j] + 0) forces awk to treat them as floats)
     sorted_numbers=$(printf "%s\n" $numbers | awk '{a[NR] = $0} END {for (i = 1; i <= NR; i++) for (j = i + 1; j <= NR; j++) if (a[i] + 0 > a[j] + 0) {temp = a[i]; a[i] = a[j]; a[j] = temp} for (i = 1; i <= NR; i++) print a[i]}')
-    # Convert the sorted output back into a variable
-    numbers="$sorted_numbers"
 }
 
 #Mesures execution time in seconds

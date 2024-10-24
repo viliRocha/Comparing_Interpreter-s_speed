@@ -1,29 +1,20 @@
 {
-    "name": "Java 21 Development Environment",
-    "image": "mcr.microsoft.com/java/jdk:21",
-    "features": {
-        "java": "21"
-    },
+    "name": "Ubuntu",
+    "image": "mcr.microsoft.com/vscode/devcontainers/java:0-17",
 
     // Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
             "extensions": [
-                "redhat.java",
                 "vscjava.vscode-java-pack"
             ],
             "settings": {
-                "java.home": "/usr/local/openjdk-21",
-                "java.configuration.runtimes": [
-                    {
-                        "name": "JavaSE-21",
-                        "path": "/usr/local/openjdk-21"
-                    }
-                ]
+                "java.home": "/usr/local/sdkman/candidates/java/current"
             }
 	    }
-    }
+    },
 
-    //"postCreateCommand": "javac -version && java -version",
-    //"remoteUser": "vscode"
+    "forwardPorts": [],
+    "postCreateCommand": "java -version",
+    "remoteUser": "vscode"
 }
