@@ -1,30 +1,39 @@
-const values = [7.9, 4.2, 7.9, 3.6, 0.9, 2.3, 3.6]
+# Function to calculate the mode
+func get_mode(values) {
+    const frequency = {} # Array to store the frequency
+    var bgst_freq = 0    # Maximum frequency
+    const mode_vals = [] # Array to store the modes
+    var mode_count = 0   # Mode counter
 
-#   Gets mode numbers in array
-func get_mode() {
-    var freq = []
-    var bgst_freq = 0
-
-    for (var i = 0, i < length(values), i+= 1) {
-        const num = values[i]
-        freq[num] = (freq[num] or 0) + 1
-        if (freq[num] > bgst_freq) {
-            bgst_freq = freq[num]
+    # Count the frequency of each number
+    for (var i = 0, i < length(values), i += 1) {
+        var found = 0
+        for (var j = 0, j < mode_count, j += 1) {
+            if (mode_vals[j] == values[i]) {
+                found = 1
+                frequency[j] += 1
+                if (frequency[j] > bgst_freq) {
+                    bgst_freq = frequency[j]
+                }
+                break
+            }
+        }
+        if (!found) {
+            mode_vals[mode_count] = values[i]
+            frequency[mode_count] = 1
+            mode_count += 1
         }
     }
 
-    # Find the numbers that have the highest frequency using a for loop
-    const modes = []
-    #const keys = Object.keys(freq) # Get the keys of the frequency object
-    for (var i = 0, i < length(keys), i+= 1) {
-        const num = keys[i]
-        if (freq[num] == bgst_freq) {
-            #modes.push(num)
+    # Display the mode values
+    print("Mode: ")
+    for (var i = 0, i < mode_count, i += 1) {
+        # Find the numbers that have the highest frequency
+        if (frequency[i] == bgst_freq) {
+            print(mode_vals[i])
         }
     }
-    
-    # result
-    print("Mode: " + join(modes, ", "))
 }
 
-get_mode()
+const values = [7.9, 4.2, 7.9, 3.6, 0.9, 2.3, 3.6]
+get_mode(values)

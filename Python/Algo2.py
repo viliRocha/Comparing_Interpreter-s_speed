@@ -3,27 +3,27 @@ from timeit import timeit
 values = [7.9, 4.2, 7.9, 3.6, 0.9, 2.3, 3.6]
 
 def get_mode(mod):
-    frequency = {}
+  frequency = {}
 
-    bgst_freq = 1
+  bgst_freq = 1
 
-    mode_vals = []
+  mode_vals = []
 
-    for num in mod:
+  for num in mod:
 
-        if num in frequency:
-          frequency[num] += 1
-        else:
-          frequency[num] = 1
+    if num in frequency:
+      frequency[num] += 1
+    else:
+      frequency[num] = 1
 
-        if (frequency[num] > bgst_freq):
-            bgst_freq = frequency[num]
+    if (frequency[num] > bgst_freq):
+      bgst_freq = frequency[num]
 
-    for num in frequency:
-        if(frequency[num] == bgst_freq):
-            mode_vals.append(num)
+  for num in frequency:
+    if(frequency[num] == bgst_freq):
+      mode_vals.append(num)
 
-    return mode_vals
+  return mode_vals
     
 code = '''
 get_mode(values)

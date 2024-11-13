@@ -1,18 +1,23 @@
-var numbers = [13, 5, 7, 200, 3, 7.9]
+const numbers = [13, 5, 7, 200, 3, 7.9]
 
-func put_in_order() {
-  for (var i = 1, i < numbers.length, i+= 1) {
-    var current = numbers[i]
-    var j = i - 1
-        
-    for (j >= 0 and numbers[j] > current) {
-      numbers[j + 1] = numbers[j]
-      j-= 1
+func bubbleSort(arr) {
+
+  const n = length(arr)
+
+  for (var i = 0, i < n - 1, i += 1) {
+
+    for (var j = 0, j < n - i - 1, j += 1) {
+
+      if (arr[j] > arr[j + 1]) {
+
+        # Swap the elements
+        const temp = arr[j]
+        arr[j] = arr[j + 1]
+        arr[j + 1] = temp
+      }
     }
-        
-    numbers[j + 1] = current
   }
+  print(arr)
 }
 
-put_in_order()
-print(numbers)
+bubbleSort(numbers)

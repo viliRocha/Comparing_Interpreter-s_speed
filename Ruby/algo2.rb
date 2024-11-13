@@ -15,9 +15,9 @@ result = Benchmark.measure do
             num = mod[i]
 
             if frequency[num]
-            frequency[num] += 1
+                frequency[num] += 1
             else 
-            frequency[num] = 1
+                frequency[num] = 1
             end
 
             if frequency[num] > bgst_freq
