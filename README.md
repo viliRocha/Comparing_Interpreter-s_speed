@@ -4,7 +4,7 @@
 
 ### I will implement two algorithms in each language:
 
-The first algorithm will sort an array of numbers in ascending order.
+The first algorithm will sort an array of numbers in ascending order using the insertion sort method.
 
 And the second one will calculate the mode between the numbers within the array.
 
@@ -20,4 +20,4 @@ NB: Some of the languages  included in this comparison, such as Java and JavaScr
 
 
 
-It is important to remember that all of those tests have been carried out in the same Acer Aspire A315-41 laptop with Ubuntu 22.04.4 LTS.
+It is important to remember that all of those tests have been carried out in the same ASUSTeK COMPUTER INC. Vivobook_ASUSLaptop X1605ZA_X1605ZA with Debian 12.7.

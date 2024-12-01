@@ -1,6 +1,6 @@
 require 'benchmark'
 
-numbers = [13, 5, 7, 200, 3, 7.9]
+numbers = [-3.5, 2, 0, -1, 4.2, 7, -8, 5.5, 3, -2, 1.1, 6, -4, 8.8, 0.5, -6]
 
 #Calculate programs execution time
 result = Benchmark.measure do

@@ -5,10 +5,10 @@ public class PutInOrder {
 
         double startTime = System.nanoTime();
 
-        int[] numbers = {13, 5, 7, 200, 3, 9};
+        double[] numbers = {-3.5, 2, 0, -1, 4.2, 7, -8, 5.5, 3, -2, 1.1, 6, -4, 8.8, 0.5, -6};
 
         for (int i = 0; i < numbers.length; i++) {
-            int current = numbers[i];
+            double current = numbers[i];
             int j = i - 1;
 
             while (j >= 0 && numbers[j] > current) {
