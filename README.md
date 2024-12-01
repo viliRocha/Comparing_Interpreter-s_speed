@@ -8,7 +8,7 @@ The first algorithm will sort an array of numbers in ascending order using the i
 
 And the second one will calculate the mode between the numbers within the array.
 
-### o evaluate the performance of each programming language, I will execute each algorithm three times and compute the average execution time. This data will then be used to create two comparative graphs.
+### To evaluate the performance of each programming language, I will execute each algorithm ten times and compute the average and the standard deviation of execution times. This data will then be used to create two comparative graphs.
 
 NB: Some of the languages  included in this comparison, such as Java and JavaScript, are not strictly interpreted. Instead, they utilize JIT (Just in Time) Compilation, which means that while most of the code is interpreted, performance-intensive tasks, such as loops, are directly compiled into machine code.
 
