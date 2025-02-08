@@ -1,7 +1,9 @@
-const values = [7.9, 4.2, 7.9, 3.6, 0.9, 2.3, 3.6];
+import { readFileSync } from "fs";
+
+const content = readFileSync("./data/50_nums.txt", "utf-8");
 
 //  Gets mode numbers in array
-function get_mode() {
+function get_mode(values) {
     console.time('code executed in');
 
     let frequency = [];
@@ -16,7 +18,7 @@ function get_mode() {
             bgst_freq = frequency[num];
         }
     }
-    
+
     // Find the numbers that have the highest frequency using a for loop
     const modes = [];
     const keys = Object.keys(frequency); // Get the keys of the frequency object
@@ -27,9 +29,16 @@ function get_mode() {
         }
     }
 
-    console.timeEnd('code executed in');
-
     console.log("Mode: " + modes.join(", "));
+
+    console.timeEnd('code executed in');
 }
 
-get_mode();
+// Converts the file content (string) to an array
+const numsArray = content
+    .replace("[", "")
+    .replace("]", "")
+    .split(",")
+    .map(num => parseFloat(num.trim()));
+
+get_mode(numsArray);

@@ -1,20 +1,26 @@
 {
-    "name": "Ubuntu",
-    "image": "mcr.microsoft.com/vscode/devcontainers/java:latest",
-
-    // Configure tool-specific properties.
-	"customizations": {
-		"vscode": {
-            "extensions": [
-                "vscjava.vscode-java-pack"
-            ],
-            "settings": {
-                "java.home": "/usr/local/sdkman/candidates/java/current"
-            }
-	    }
+    "name": "Ruby Development",
+    "image": "mcr.microsoft.com/devcontainers/ruby:latest",
+    "features": {
+      "ghcr.io/devcontainers/features/ruby:1": {
+        "version": "latest"
+      }
     },
-
-    "forwardPorts": [],
-    "postCreateCommand": "java -version",
+    "customizations": {
+      "vscode": {
+        "settings": {
+            "ruby.useLanguageServer": true,
+            "editor.formatOnSave": true
+        },
+        "extensions": [
+          "rebornix.Ruby",
+          "castwide.solargraph",
+          "wingrunr21.vscode-ruby"
+        ]
+      }
+    },
+    "postCreateCommand": "bundle install",
+    "forwardPorts": [3000],
     "remoteUser": "vscode"
-}
+  }
+  

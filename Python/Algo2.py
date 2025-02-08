@@ -1,6 +1,16 @@
 from timeit import timeit
 
-values = [7.9, 4.2, 7.9, 3.6, 0.9, 2.3, 3.6]
+# Basic algorithm to put numbers from an array  in ascending order
+
+# Lê o arquivo e processa os números
+with open("test.txt", "r") as file:
+    content = file.read()
+    nums_array = (
+        content.replace("[", "")  # Remove o colchete de abertura
+               .replace("]", "")  # Remove o colchete de fechamento
+               .split(",")        # Divide os números por vírgula
+    )
+    nums_array = [float(num.strip()) for num in nums_array]  # Remove espaços e converte para float
 
 def get_mode(mod):
   frequency = {}
@@ -26,10 +36,10 @@ def get_mode(mod):
   return mode_vals
     
 code = '''
-get_mode(values)
+get_mode(nums_array)
 '''
 
 
 algo_two_time = timeit(stmt=code, number=1, globals=globals())
 
-print ('Mode:', get_mode(values), f"\n Executed in: {algo_two_time}ms")
+print ('Mode:', get_mode(nums_array), f"\n Executed in: {algo_two_time}ms")

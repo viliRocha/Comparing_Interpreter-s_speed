@@ -1,15 +1,47 @@
+import java.io.File;  // Import the File class
+import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.util.Scanner; // Import the Scanner class to read text files
+
+import java.util.ArrayList;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.text.DecimalFormat;
 
 public class GetMode {
     public static void main(String[] args) {
-        double[] values = {7.9, 4.2, 7.9, 3.6, 0.9, 2.3, 3.6};
+        ArrayList<Double> values = new ArrayList<>();
+        
+        try {
+            File txtFile = new File("test.txt");
+            Scanner rawContent = new Scanner(txtFile);
+        
+            while (rawContent.hasNextLine()) {
+                String data = rawContent.nextLine().trim(); // Reads the line and removes extra spaces
+                
+                // Remove brackets
+                data = data.replace("[", "").replace("]", "");
+
+                // Splits the string into individual numbers using the comma as a separator
+                String[] numberStrings = data.split(",");
+                
+                for (String numberString : numberStrings) {
+                    double number = Double.parseDouble(numberString.trim()); // Remove spaces and converts
+                    
+                    values.add(number);
+                }
+            }
+            rawContent.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred while reading file.");
+            e.printStackTrace();
+        }
+        
         System.out.println("Mode: " + getMode(values));
     }
 
     // Gets mode numbers in array
-    public static String getMode(double[] mod) {
+    public static String getMode(ArrayList<Double> mod) {
         long startTime = System.nanoTime();
 
         HashMap<Double, Integer> frequency = new HashMap<>();

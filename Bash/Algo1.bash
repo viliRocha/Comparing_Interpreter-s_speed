@@ -1,17 +1,20 @@
 #!/bin/bash
 
-# Define the numbers as a space-separated string
-numbers="-3.5 2 0 -1 4.2 7 -8 5.5 3 -2 1.1 6 -4 8.8 0.5 -6"
+# Read the file contents
+content=$(<./data/50_nums.txt)
+
+# Remove brackets and commas (need to be a space-separated string for AWK)
+clean_content=$(echo "$content" | sed 's/[][]//g' | tr -d ',')
 
 # Function to sort numbers in increasing order using awk
 put_in_order() {
     # Converting the array to a format suitable for awk
     
     # Using awk "sort" 
-    # sorted_numbers=$(echo $numbers | awk '{for(i=1;i<=NF;i++) print $i}' | sort -n)
+    # sorted_numbers=$(echo $content | awk '{for(i=1;i<=NF;i++) print $i}' | sort -n)
 
     # without awk sort (Adding + 0 in if (a[i] + 0 > a[j] + 0) forces awk to treat them as floats)
-    sorted_numbers=$(printf "%s\n" $numbers | awk '{a[NR] = $0} END {for (i = 1; i <= NR; i++) for (j = i + 1; j <= NR; j++) if (a[i] + 0 > a[j] + 0) {temp = a[i]; a[i] = a[j]; a[j] = temp} for (i = 1; i <= NR; i++) print a[i]}')
+    sorted_numbers=$(printf "%s\n" $clean_content | awk '{a[NR] = $0} END {for (i = 1; i <= NR; i++) for (j = i + 1; j <= NR; j++) if (a[i] + 0 > a[j] + 0) {temp = a[i]; a[i] = a[j]; a[j] = temp} for (i = 1; i <= NR; i++) print a[i]}')
 }
 
 #Mesures execution time in seconds

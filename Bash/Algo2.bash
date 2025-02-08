@@ -1,10 +1,14 @@
 #!/bin/bash
 
-values=(7.9 4.2 7.9 3.6 0.9 2.3 3.6)
+# Read the file contents
+content=$(<./data/1000_nums.txt)
+
+# Remove brackets and commas (need to be a space-separated string for AWK)
+clean_content=$(echo "$content" | sed 's/[][]//g' | tr -d ',')
 
 get_mode() {
     # Converting the array to a string and passing it to AWK
-    vals_mode=$(printf "%s\n" "${values[@]}" | awk '
+    vals_mode=$(printf "%s\n" "${clean_content[@]}" | awk '
     {
         # Cut the frequency of each number
         for (i = 1; i <= NF; i++) {

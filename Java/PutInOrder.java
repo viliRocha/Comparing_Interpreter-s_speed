@@ -1,27 +1,59 @@
+import java.io.File;  // Import the File class
+import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.util.Scanner; // Import the Scanner class to read text files
+
+import java.util.ArrayList;
+
 import java.text.DecimalFormat;
 
 public class PutInOrder {
     public static void main(String[] args) {
 
         double startTime = System.nanoTime();
+        
+        ArrayList<Double> numbers = new ArrayList<>();
+        
+        try {
+            File txtFile = new File("test.txt");
+            Scanner rawContent = new Scanner(txtFile);
+        
+            while (rawContent.hasNextLine()) {
+                String data = rawContent.nextLine().trim(); // Reads the line and removes extra spaces
+                
+                // Remove brackets
+                data = data.replace("[", "").replace("]", "");
 
-        double[] numbers = {-3.5, 2, 0, -1, 4.2, 7, -8, 5.5, 3, -2, 1.1, 6, -4, 8.8, 0.5, -6};
+                // Splits the string into individual numbers using the comma as a separator
+                String[] numberStrings = data.split(",");
+                
+                for (String numberString : numberStrings) {
+                    double number = Double.parseDouble(numberString.trim()); // Remove spaces and converts
+                    
+                    numbers.add(number);
+                }
+            }
+            rawContent.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred while reading file.");
+            e.printStackTrace();
+        }
 
-        for (int i = 0; i < numbers.length; i++) {
-            double current = numbers[i];
+        //  Actual insertion sort algorithm
+        for (int i = 0; i < numbers.size(); i++) {
+            double current = numbers.get(i);
             int j = i - 1;
 
-            while (j >= 0 && numbers[j] > current) {
-              numbers[j + 1] = numbers[j];
+            while (j >= 0 && numbers.get(j) > current) {
+              numbers.set(j + 1, numbers.get(j));
               j--;
             }
 
-            numbers[j + 1] = current;
+            numbers.set(j + 1, current);
         }
 
         // Finally we can print the numbers in the ascending order
-        for (int i = 0; i < numbers.length; i++) {
-            System.out.println(numbers[i]);
+        for (int i = 0; i < numbers.size(); i++) {
+            System.out.println(numbers.get(i));
         }
 
         double endTime = System.nanoTime();

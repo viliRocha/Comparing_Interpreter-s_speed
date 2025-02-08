@@ -2,23 +2,31 @@ from timeit import timeit
 
 # Basic algorithm to put numbers from an array  in ascending order
 
-numbers = [-3.5, 2, 0, -1, 4.2, 7, -8, 5.5, 3, -2, 1.1, 6, -4, 8.8, 0.5, -6]
+# Read the file and process the numbers
+with open("test.txt", "r") as file:
+    content = file.read()
+    nums_array = (
+        content.replace("[", "")  # Remove the opening barcket
+               .replace("]", "")
+               .split(",")        # Split in the colon
+    )
+    nums_array = [float(num.strip()) for num in nums_array]  # Remove spaces and converts to float
 
-def put_in_order():
-  for i, num in enumerate(numbers):
+def put_in_order(values):
+  for i, num in enumerate(values):
     #current = num
     j = i - 1
 
-    while j >= 0 and numbers[j] > num:
-      numbers[j + 1] = numbers[j]
+    while j >= 0 and values[j] > num:
+      values[j + 1] = values[j]
       j = j - 1
 
-    numbers[j + 1] = num
+    values[j + 1] = num
 
 code = '''
-put_in_order()
+put_in_order(nums_array)
 '''
 
 algo_one_time = timeit(stmt=code, number=1, globals=globals())
 
-print(numbers, f"Executed in: {algo_one_time}ms")
+print(nums_array, f"\n Executed in: {algo_one_time}ms")
