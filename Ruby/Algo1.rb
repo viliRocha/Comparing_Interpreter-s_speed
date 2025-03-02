@@ -18,7 +18,7 @@ end
 result = Benchmark.measure do
   numsArray = []
 
-  File.open("./data/50_nums.txt", "r") do |file|
+  File.open("./data/1000_nums.txt", "r") do |file|
     content = file.read
     numsArray = content
                   .gsub("[", "") # Remove the opening barcket

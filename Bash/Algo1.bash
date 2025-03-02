@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Read the file contents
-content=$(<./data/50_nums.txt)
+content=$(<./data/1000_nums.txt)
 
 # Remove brackets and commas (need to be a space-separated string for AWK)
 clean_content=$(echo "$content" | sed 's/[][]//g' | tr -d ',')

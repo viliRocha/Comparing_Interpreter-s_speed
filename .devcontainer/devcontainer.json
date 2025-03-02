@@ -1,26 +1,27 @@
 {
-    "name": "Ruby Development",
-    "image": "mcr.microsoft.com/devcontainers/ruby:latest",
-    "features": {
-      "ghcr.io/devcontainers/features/ruby:1": {
-        "version": "latest"
-      }
-    },
-    "customizations": {
-      "vscode": {
-        "settings": {
-            "ruby.useLanguageServer": true,
-            "editor.formatOnSave": true
-        },
-        "extensions": [
-          "rebornix.Ruby",
-          "castwide.solargraph",
-          "wingrunr21.vscode-ruby"
-        ]
-      }
-    },
-    "postCreateCommand": "bundle install",
-    "forwardPorts": [3000],
-    "remoteUser": "vscode"
-  }
-  
+  "name": "Ubuntu",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/ruby:1": {
+      "version": "latest"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "ruby.useLanguageServer": true,
+        "editor.formatOnSave": true
+      },
+      "extensions": [
+        "rebornix.Ruby",
+        "castwide.solargraph",
+        "wingrunr21.vscode-ruby"
+      ]
+    }
+  },
+  "forwardPorts": [
+    3000
+  ],
+  "remoteUser": "vscode"
+  //  docker image prune <- use that command in case of overload of images
+}
