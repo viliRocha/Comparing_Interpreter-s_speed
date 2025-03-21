@@ -35,5 +35,17 @@ func get_mode(values) {
     }
 }
 
-const values = [7.9, 4.2, 7.9, 3.6, 0.9, 2.3, 3.6]
-get_mode(values)
+const content = File.read("./data/50_nums.txt")
+
+const nums_array = split(
+    replace(
+        replace(content, "]", ""
+    ), "[", ""
+  ), ", "
+)
+
+for (var i = 0, i < length(nums_array), i += 1) {
+  nums_array[i] = toNumber(nums_array[i])
+}
+
+get_mode(nums_array)

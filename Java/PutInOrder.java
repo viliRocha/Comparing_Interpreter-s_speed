@@ -14,7 +14,7 @@ public class PutInOrder {
         ArrayList<Double> numbers = new ArrayList<>();
         
         try {
-            File txtFile = new File("test.txt");
+            File txtFile = new File("./data/1000_nums.txt");
             Scanner rawContent = new Scanner(txtFile);
         
             while (rawContent.hasNextLine()) {

@@ -1,45 +1,41 @@
-from timeit import timeit
+import time
 
-# Basic algorithm to put numbers from an array  in ascending order
+# Measuring total time including the output
+start_time = time.time()
 
-# Lê o arquivo e processa os números
-with open("test.txt", "r") as file:
+# Read the file and process the numbers
+with open("./data/1000_nums.txt", "r") as file:
     content = file.read()
     nums_array = (
-        content.replace("[", "")  # Remove o colchete de abertura
-               .replace("]", "")  # Remove o colchete de fechamento
-               .split(",")        # Divide os números por vírgula
+        content.replace("[", "")  # Remove the opening bracket
+               .replace("]", "")  # Remove the closing bracket
+               .split(",")        # Split the numbers by comma
     )
-    nums_array = [float(num.strip()) for num in nums_array]  # Remove espaços e converte para float
+    nums_array = [float(num.strip()) for num in nums_array]  # Remove spaces and convert to float
 
 def get_mode(mod):
-  frequency = {}
+    frequency = {}
+    bgst_freq = 1
+    mode_vals = []
 
-  bgst_freq = 1
+    for num in mod:
+        if num in frequency:
+            frequency[num] += 1
+        else:
+            frequency[num] = 1
 
-  mode_vals = []
+        if frequency[num] > bgst_freq:
+            bgst_freq = frequency[num]
 
-  for num in mod:
+    for num in frequency:
+        if frequency[num] == bgst_freq:
+            mode_vals.append(num)
 
-    if num in frequency:
-      frequency[num] += 1
-    else:
-      frequency[num] = 1
+    return mode_vals
 
-    if (frequency[num] > bgst_freq):
-      bgst_freq = frequency[num]
+mode_result = get_mode(nums_array)
+end_time = time.time()
 
-  for num in frequency:
-    if(frequency[num] == bgst_freq):
-      mode_vals.append(num)
+total_time = (end_time - start_time) * 1000  # Convert to milliseconds
 
-  return mode_vals
-    
-code = '''
-get_mode(nums_array)
-'''
-
-
-algo_two_time = timeit(stmt=code, number=1, globals=globals())
-
-print ('Mode:', get_mode(nums_array), f"\n Executed in: {algo_two_time}ms")
+print('Mode:', mode_result, f"\n Executed in: {total_time:.4f} ms")

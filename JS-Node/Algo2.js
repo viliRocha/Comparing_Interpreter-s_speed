@@ -1,11 +1,11 @@
 import { readFileSync } from "fs";
 
-const content = readFileSync("./data/50_nums.txt", "utf-8");
+console.time('code executed in');
+
+const content = readFileSync("./data/1000_nums.txt", "utf-8");
 
 //  Gets mode numbers in array
 function get_mode(values) {
-    console.time('code executed in');
-
     let frequency = [];
 
     let bgst_freq = 1;
@@ -30,8 +30,6 @@ function get_mode(values) {
     }
 
     console.log("Mode: " + modes.join(", "));
-
-    console.timeEnd('code executed in');
 }
 
 // Converts the file content (string) to an array
@@ -42,3 +40,5 @@ const numsArray = content
     .map(num => parseFloat(num.trim()));
 
 get_mode(numsArray);
+
+console.timeEnd('code executed in');

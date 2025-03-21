@@ -13,7 +13,7 @@ public class GetMode {
         ArrayList<Double> values = new ArrayList<>();
         
         try {
-            File txtFile = new File("test.txt");
+            File txtFile = new File("./data/50_nums.txt");
             Scanner rawContent = new Scanner(txtFile);
         
             while (rawContent.hasNextLine()) {

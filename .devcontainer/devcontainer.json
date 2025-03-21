@@ -1,27 +1,27 @@
 {
   "name": "Ubuntu",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "features": {
-    "ghcr.io/devcontainers/features/ruby:1": {
+    "ghcr.io/devcontainers/features/node:1": {
       "version": "latest"
     }
   },
   "customizations": {
     "vscode": {
       "settings": {
-        "ruby.useLanguageServer": true,
-        "editor.formatOnSave": true
-      },
-      "extensions": [
-        "rebornix.Ruby",
-        "castwide.solargraph",
-        "wingrunr21.vscode-ruby"
-      ]
+        "terminal.integrated.shell.linux": "/bin/bash"
+      }
     }
   },
-  "forwardPorts": [
-    3000
-  ],
-  "remoteUser": "vscode"
-  //  docker image prune <- use that command in case of overload of images
+  "postCreateCommand": "npm install"
 }
+// Remove old containers
+// docker container prune -f
+
+// Remove old images
+// docker image prune -a -f
+
+// Remove old volumes
+// docker volume prune -f

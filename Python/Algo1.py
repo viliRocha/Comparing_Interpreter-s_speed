@@ -1,9 +1,12 @@
-from timeit import timeit
+import time
 
 # Basic algorithm to put numbers from an array  in ascending order
 
+# Measuring total time including the output
+start_time = time.time()
+
 # Read the file and process the numbers
-with open("test.txt", "r") as file:
+with open("./data/250_nums.txt", "r") as file:
     content = file.read()
     nums_array = (
         content.replace("[", "")  # Remove the opening barcket
@@ -23,10 +26,9 @@ def put_in_order(values):
 
     values[j + 1] = num
 
-code = '''
-put_in_order(nums_array)
-'''
+mode_result = put_in_order(nums_array)
+end_time = time.time()
 
-algo_one_time = timeit(stmt=code, number=1, globals=globals())
+total_time = (end_time - start_time) * 1000  # Convert to milliseconds
 
-print(nums_array, f"\n Executed in: {algo_one_time}ms")
+print(nums_array, f"\n Executed in: {total_time}ms")

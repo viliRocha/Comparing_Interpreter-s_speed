@@ -1,6 +1,6 @@
-var numbers = [-3.5, 2, 0, -1, 4.2, 7, -8, 5.5, 3, -2, 1.1, 6, -4, 8.8, 0.5, -6]
+const content = File.read("./data/50_nums.txt")
 
-func put_in_order() {
+func put_in_order(numbers) {
   for (var i = 1, i < length(numbers), i += 1) {
     const current = numbers[i]
 
@@ -14,5 +14,17 @@ func put_in_order() {
   }
 }
 
-put_in_order()
-print(numbers)
+const nums_array = split(
+    replace(
+        replace(content, "]", ""
+    ), "[", ""
+  ), ", "
+)
+
+for (var i = 0, i < length(nums_array), i += 1) {
+  nums_array[i] = toNumber(nums_array[i])
+}
+
+put_in_order(nums_array)
+
+print(nums_array)

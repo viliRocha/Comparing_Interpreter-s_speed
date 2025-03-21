@@ -1,21 +1,17 @@
-# base image
-FROM python:3.11-slim
+# Base image
+FROM python:3.13.2-slim
 
 # Atualizar os pacotes e instalar dependências necessárias
-RUN apt-get update && apt-get install -y \
-    ruby-full \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     wget \
-    && apt-get clean
+    && rm -rf /var/lib/apt/lists/*
 
 # Baixar e instalar o get-pip.py para garantir que o pip esteja instalado
 WORKDIR /tmp
 RUN wget https://bootstrap.pypa.io/get-pip.py && \
     python3 get-pip.py && \
     rm get-pip.py
-
-# Instalar o Ruby dentro do contêiner Python (se necessário)
-RUN apt-get update && apt-get install -y ruby-full
 
 # Configurar o PATH para incluir o diretório do pip
 ENV PATH="/usr/local/bin:${PATH}"
@@ -30,5 +26,5 @@ COPY . /app
 # Instalar dependências Python
 RUN pip3 install --no-cache-dir gspread
 
-# Comando padrão para executar o script Python
+# Comando padrão para o contêiner (opcional)
 CMD ["python", "exec_time_organizer.py"]
