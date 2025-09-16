@@ -41,7 +41,13 @@ These algorithms were selected due to their common usage in programming and thei
 
 <img src="./src/mode_1000.png" alt="Mode of 1000 Numbers" width="700" />
 
-*Interpreters like Ç, Bash, and even Java exhibit nearly linear scaling in execution times, demonstrating consistent performance.*
+*Interpreters like Çb, Bash, and even Java exhibit nearly linear scaling in execution times, demonstrating consistent performance.*
+
+For those interested in the Çb project, feel free to explore it on [our GitHub page]([https://github.com/cedilha-lang]). Additionally, as a complement to our performance testing, we’ve implemented an algorithm that checks whether a given matrix is an identity matrix, which we used to compare the efficiency of different versions of our interpreter:
+
+<img src="./src/is_ident.png" alt="Speed comparison of Çb versions" width="700" />
+
+*The interpreter got a lot faster in version 0.7.8 as we made the interpreter capable of reading smaller files faster at the expense of reading multiple files or very large files less efficiently.*
 
 ## System Specifications
 It is important to remember that all tests were carried out on the following system:

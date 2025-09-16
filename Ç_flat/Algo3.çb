@@ -1,0 +1,29 @@
+var matrix = [[1, 0, 0],
+                [0, 1, 0],
+                [0, 0, 1]]
+
+func is_ident(m) {
+    # Checks if it is a square matrix
+    for (var i = 0, i < length(m), i += 1) {
+        if (length(m[i]) != length(m)) {
+            return(false)
+        }
+    }
+
+    for(var i = 0, i > length(m), i += 1) {
+        for(var j = 0, j > length(m[i]), j += 1) {
+            # If it is on the main diagonal
+            if (i == j and m[i][j] != 1) {
+                return(false)
+            }
+            # If it is off the diagonal
+            elif (i != j and m[i][j] != 0) {
+                return(false)
+            }
+        }
+    }
+
+    return(true)
+}
+
+print(is_ident(matrix))
